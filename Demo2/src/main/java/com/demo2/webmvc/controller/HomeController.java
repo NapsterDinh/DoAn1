@@ -62,6 +62,7 @@ public class HomeController extends HttpServlet {
                    }
                    session.setAttribute("style_profile", "inline-block");
                    session.setAttribute("style_login", "none");
+                   request.setAttribute("home", "home");
                    // Redirect (Chuyển hướng) tới trang login.
                    // Nếu người dùng chưa login thì forward (chuyển tiếp) tới trang index.jsp
                    RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/index.jsp");
@@ -80,6 +81,7 @@ public class HomeController extends HttpServlet {
            {
                session.setAttribute("style_profile", "none");
                session.setAttribute("style_login", "inline-block");
+               request.setAttribute("home", "home");
                // Nếu người dùng chưa login thì forward (chuyển tiếp) tới trang index.jsp
                RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/index.jsp");
                dispatcher.forward(request, response);

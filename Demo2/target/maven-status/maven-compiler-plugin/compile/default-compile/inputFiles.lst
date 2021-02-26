@@ -22,10 +22,12 @@ G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\model\Province.java
 G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\controller\CartController.java
 G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\service\SendingEmail.java
 G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\controller\SuaSanPham.java
+G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\conn\SQLServerConnUtils_SQLJDBC.java
 G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\controller\QuanLyDonHang.java
 G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\controller\WishlistController.java
 G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\filter\JDBCFilter.java
 G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\controller\QuanLyTaiKhoan.java
+G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\controller\UploadServlet.java
 G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\service\ValidateRegister.java
 G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\controller\ThemSanPham.java
 G:\LTWeb\Demo2\src\main\java\com\demo2\webmvc\controller\HomeController.java

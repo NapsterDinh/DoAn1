@@ -8,6 +8,7 @@
     <packaging>war</packaging>
 
     <name>Demo2</name>
+    <url>http://maven.apache.org</url>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
@@ -15,6 +16,18 @@
     </properties>
     
     <dependencies>
+        <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.8.2</version>
+        <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.hynnet</groupId>
+            <artifactId>sqljdbc4-chs</artifactId>
+            <version>4.0.2206.100</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
@@ -27,7 +40,12 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.22</version>
         </dependency>
-        
+                    <!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+<dependency>
+    <groupId>commons-fileupload</groupId>
+    <artifactId>commons-fileupload</artifactId>
+    <version>1.4</version>
+</dependency>
         <!-- https://mvnrepository.com/artifact/org.glassfish.web/javax.servlet.jsp.jstl -->
         <dependency>
             <groupId>org.glassfish.web</groupId>
@@ -159,6 +177,14 @@
                 <artifactId>commons-fileupload</artifactId>
                 <version>1.4</version>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/com.hynnet/sqljdbc-chs -->
+            <dependency>
+                <groupId>com.hynnet</groupId>
+                <artifactId>sqljdbc-chs</artifactId>
+                <version>4.0.2206.100</version>
+            </dependency>
+
+
 
 
     </dependencies>
@@ -210,6 +236,27 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>2.3</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals><goal>copy</goal></goals>
+                    <configuration>
+                        <artifactItems>
+                            <artifactItem>
+                         <groupId>com.github.jsimone</groupId>
+                        <artifactId>webapp-runner</artifactId>
+                                <version>8.0.30.2</version>
+                     <destFileName>webapp-runner.jar</destFileName>
+                            </artifactItem>
+                        </artifactItems>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
         </plugins>
     </build>
 

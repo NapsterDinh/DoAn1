@@ -5213,8 +5213,19 @@ Shop Area CSS
 .single-shop-products .shop-products-image img {
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  height: 251px;
+  object-fit: cover;
 }
-
+.slider-for .slick-list .slick-track .slick-slide img{
+    height: 533px;
+    object-fit: cover;
+    width: 533px;
+}
+.slider-nav .slick-list .slick-track .slick-slide img{
+    object-fit: cover;
+    height: 48px;
+    width: 48px;
+}
 .single-shop-products .shop-products-image .tag {
   display: inline-block;
   background: #113366;

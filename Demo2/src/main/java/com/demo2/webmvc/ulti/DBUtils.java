@@ -508,6 +508,22 @@ public class DBUtils {
         }
     }
       
+      public static boolean Update_Avatar(Connection conn, UserAccount us,String filename) throws SQLException 
+      {
+        String sql = "Update `user` set	avatar_user = ? where id_user = ?";
+        Connection dbConn = conn;
+        try ( PreparedStatement statement = dbConn.prepareStatement(sql)) {
+            statement.setString(1, filename);
+            statement.setInt(2, us.getId_user());
+            statement.executeUpdate();
+            return true;
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+      
       public static boolean Create_Order(Connection conn, Order or) throws SQLException 
     {
         int id_order =0;
@@ -704,6 +720,40 @@ public class DBUtils {
             return false;
         }
     }
+    
+    
+    
+    
+    public static List<Product> Search_Product_By_IdCategory(Connection conn, int id_category) throws SQLException {
+        //conn.setAutoCommit(false); // 1. Disable individualtransaction //nhưng phải có cái này
+        try {
+            List<Product> list_pr = new ArrayList();
+            //khoi tao loi goi thuc thi thu tuc
+            CallableStatement command = conn.prepareCall("{call `Procedure_Search_Product_By_IdCategory`(?)}");
+            command.setInt(1, id_category);// cung cap gia tro cho bien
+            command.execute();
+            // Executes the Procedure statement 
+            ResultSet rs = command.getResultSet();
+            while (rs.next()) {
+                Product pr = new Product();
+                pr.setId_Product(rs.getInt(1));
+                pr.setId_Category(rs.getInt(2));
+                pr.setName_product(rs.getString(3));
+                pr.setDescription(rs.getString(4));
+                pr.setAmount(rs.getInt(5));
+                pr.setPrice(rs.getFloat(6));
+                pr.setState(rs.getInt(7));
+                pr.setDate(rs.getDate(8));
+                pr.setImage(rs.getString(9));
+                list_pr.add(pr);
+            }
+            return list_pr;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
     
     
 }

@@ -14,8 +14,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS --> 
-        
-        
         <!-- Animate CSS --> 
         <link rel="stylesheet" href="assets/css/animate.min.css">
         <!-- Meanmenu CSS -->
@@ -48,6 +46,7 @@
 		<title>Ejon - Electronics eCommerce HTML Template</title>
 
         <link rel="icon" type="image/png" href="assets/img/favicon.png">
+        <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     </head>
 
     <body>
@@ -62,31 +61,6 @@
         </div>
         <!-- End Preloader Area -->
         <style>
-          .top-header-area {
-            background-color: #ffffff;
-            padding-top: 15px;
-            padding-bottom: 15px;
-        }
-        .top-header-content span {
-            color: #292929;
-            font-size: 16px;
-            font-weight: 400;
-        }
-        .top-header-optional li {
-            color: #292929;
-        }
-        .top-header-optional .language-switcher .dropdown-toggle {
-            color: #292929;
-        }
-        .top-header-optional .language-switcher .dropdown-menu .dropdown-item{
-            color: #292929;
-        }   
-        .top-header-optional li i {
-            color: #292929;
-        }
-        .top-header-optional li a {
-            color: #292929;
-        }
         </style>
         <%@include file="topheader.jsp" %>
         
@@ -97,157 +71,256 @@
                 <div class="page-section">
                     <!-- grid row -->
                     <div class="row">
-                      <!-- grid column -->
-                      <div class="col-lg-4">
-                        <!-- .card -->
-                        <div class="card card-fluid">
-                          <h6 class="card-header"> Your Details </h6>
-                          <!-- .nav -->
-                          <nav class="nav nav-tabs flex-column">
-                            <a href="" class="nav-link active">Profile</a>
-                            <a href="" class="nav-link">Account</a>
-                            <a href="" class="nav-link">Billing</a>
-                            <a href="" class="nav-link">Notifications</a>
-                          </nav>
-                          <!-- /.nav -->
-                        </div>
-                        <!-- /.card -->
-                      </div>
-                      <!-- /grid column -->
-                      <!-- grid column -->
-                      <div class="col-lg-8">
-                        <!-- .card -->
-                        <div class="card card-fluid">
-                          <h6 class="card-header"> Public Profile </h6>
-                          <!-- .card-body -->
-                          <div class="card-body">
-                            <!-- .media -->
-                            <%
-                                //UserAccount temp_user = (UserAccount)session.getAttribute("temp_user");
-                                UserAccount init_user = (UserAccount)  session.getAttribute("init_user");
-                                
-                            %>
-                            <!-- /.media -->
-                            <form action="${pageContext.request.contextPath}/accountSetting" method="post" >
-                              <!-- form row -->
-                              <div class="form-row">
-                                <!-- avatar -->
-                                <div class="user-avatar user-avatar-xl fileinput-button">
-                                  <div class="fileinput-button-label"> Change photo </div>
-                                  <img src="uploads/${init_user.getAvatar()}" alt="User Avatar">
-                                  <input id="fileupload-avatar" type="file" name="avatar"> </div>
-                                <!-- /avatar -->
-                                <!-- .media-body -->
-                                <div class="media-body pl-3">
-                                  <h3 style="font-size: 25px;" class="card-title"> Public avatar </h3>
-                                  <h6 style="font-size: 13px;" class="card-subtitle text-muted"> Click the current avatar to change your photo. </h6>
-                                  <p class="card-text">
-                                    <small>JPG, GIF or PNG 400x400, &lt; 2 MB.</small>
-                                  </p>
-                                  <!-- The avatar upload progress bar -->
-                                  <div id="progress-avatar" class="progress progress-xs fade">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <!-- /avatar upload progress bar -->
-                                </div>
-                                <!-- /.media-body -->
-                              </div>
-                                  <h3>${errorString}</h3>
-                              <!-- /form row -->
-                              <div class="form-row">
-                                <!-- form column -->
-                                <div class="col-md-6 mb-3">
-                                  <label for="input01">Full name</label>
-                                  <input type="text" name="fullname" class="form-control" id="input01" value="${init_user.getName_user()}" placeholder="Nguyễn Văn A" required=""> 
-                                  <div class="valid-feedback"> Success! You've done it. </div>
-                                </div>
-                                <!-- /form column -->
-                                <!-- form column -->
-                                <div class="col-md-6 mb-3">
-                                  <label for="input02">Phone number</label>
-                                  <input type="text" name="phone" class="form-control" id="input02" value="${init_user.getPhone()}" placeholder="032718231" required=""> 
-                                  <div class="valid-feedback"> Success! You've done it. </div>
-                                </div>
-                                  
-                                <!-- /form column -->
-                              </div>
-                              <div class="form-group">
-                                <label for="input03">Email</label>
-                                <input type="email" name="email" class="form-control" id="input03" value="${init_user.getEmail()}" placeholder="example@gmail.com" required=""> 
-                                <div class="valid-feedback"> Success! You've done it. </div>
-                            </div>
-                            <div class="form-group" style="display: flex;">
-                               <div class="form-group" style="width:50%">
-                                    <label class="control-label" for="flatpickr-wrap">Date of Birth</label>
-                                    <div class="input-group input-group-alt flatpickr" id="flatpickr9">
-                                        <input id="datepicker" name="birth" type="text" class="form-control" data-input="" value="${init_user.getBirth()}" readonly="readonly">
-                                      
-                                    </div>
-                                </div>
-                                <div class="form-group" style="margin-left: 35px;width: 50%;">
-                                    <label for="customRadio1">Gender</label>
-                                    <div style="display: flex; padding-top: 6px; justify-content: space-between;" class="gender-radio">
-                                        <div style="padding-left: 20px;" class="custom-control custom-radio">
-                                        <input type="radio" name="Male" class="custom-control-input" id="customRadio1" checked="">
-                                        <label class="custom-control-label" for="customRadio1">Male</label>
-                                      </div>
-                                      <div class="custom-control custom-radio">
-                                        <input type="radio" name="Female" class="custom-control-input" id="customRadio2">
-                                        <label class="custom-control-label" for="customRadio2">Female</label>
-                                      </div>
-                                      <div class="custom-control custom-radio">
-                                        <input type="radio" name="Undentified" class="custom-control-input" id="customRadio3">
-                                        <label class="custom-control-label" for="customRadio3">Undentified</label>
-                                      </div>
-                                    </div>
-                                </div>
-                                
-                            </div>
+						<div class="col-md-3 col-xl-2">
 
-                            <div class="form-group">
-                                <label for="input04">Address</label>
-                                <input type="text" name="address" class="form-control" id="input04" value="${init_user.getAddress()}" placeholder="90/1 Đường số 8" required=""> 
-                                <div class="valid-feedback"> Success! You've done it. </div>
-                            </div>
-                             <div class="form-group">
-                                 <div class="form-group" style="display: flex; justify-content: space-between;">
-                                     <div class="input-field" style="width:40%;cursor: pointer;">
-                                         <select name="province" class="form-control" style="cursor: pointer;" id="province">
-                                            <option>Select Province</option>
-                                        </select>
-                                    </div>
-                                     <div class="input-field" style="width:40%;cursor: pointer;">
-                                         <select  name="district" class="form-control" style="cursor: pointer;" id="district">
-                                            <option>Select District</option>
-                                        </select>
-                                    </div>
-                                 </div>
-                                 
-                                <div class="input-field" style="cursor: pointer;">
-                                    <select name="town" class="form-control" style="cursor: pointer;" id="town">
-                                            <option>Select Town</option>
-                                    </select>               
-                               </div>
-                             </div>
-                              
-                            
-                              
-                              <hr>
-                              <!-- .form-actions -->
-                              <div class="form-actions">
-                                <button type="submit" class="btn btn-primary ml-auto">Update Profile</button>
-                              </div>
-                              <!-- /.form-actions -->
-                            </form>
-                          </div>
-                          <!-- /.card-body -->
-                        </div>
-                        <!-- /.card -->
-                      </div>
-                      <!-- /grid column -->
-                    </div>
+							<div class="card">
+								<div class="card-header">
+									<h5 class="card-title mb-0">Profile Settings</h5>
+								</div>
+
+								<div class="list-group list-group-flush" role="tablist">
+									<a class="list-group-item list-group-item-action active" data-toggle="list" href="#account" role="tab">
+          Account
+        </a>
+									<a class="list-group-item list-group-item-action" data-toggle="list" href="#password" role="tab">
+          Password
+        </a>
+									<a class="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+          Privacy and safety
+        </a>
+									<a class="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+          Email notifications
+        </a>
+									<a class="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+          Web notifications
+        </a>
+									<a class="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+          Widgets
+        </a>
+									<a class="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+          Your data
+        </a>
+									<a class="list-group-item list-group-item-action" data-toggle="list" href="#" role="tab">
+          Delete account
+        </a>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-9 col-xl-10">
+							<div class="tab-content">
+								<div class="tab-pane fade show active" id="account" role="tabpanel">
+
+									<div class="card">
+										<div class="card-header">
+											<div class="card-actions float-right">
+												<div class="dropdown show">
+													<a href="#" data-toggle="dropdown" data-display="static">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                </a>
+
+													<div class="dropdown-menu dropdown-menu-right">
+														<a class="dropdown-item" href="#">Action</a>
+														<a class="dropdown-item" href="#">Another action</a>
+														<a class="dropdown-item" href="#">Something else here</a>
+													</div>
+												</div>
+											</div>
+											<h5 class="card-title mb-0">Public info</h5>
+										</div>
+										<div class="card-body">
+                                                                                        <%
+                                                                                                //UserAccount temp_user = (UserAccount)session.getAttribute("temp_user");
+                                                                                                
+                                                                                                String error_msg = "";
+                                                                                                if(request.getAttribute("errorMessage")!=null)
+                                                                                                {
+                                                                                                    error_msg = request.getAttribute("errorMessage").toString();
+                                                                                                }
+                                                                                                
+                                                                                        %>
+                                                                                        <form id="form1" onsubmit="myFunction()" action = "${pageContext.request.contextPath}/upload" method = "post"  enctype="multipart/form-data">
+                                                                                                <h3><%=error_msg%></h3>
+												<div class="row">
+													<div class="col-md-8">
+														<div class="form-group">
+															<label for="inputUsername">Username</label>
+                                                                                                                        <input value="${loginedUser.getUsername()}" readonly type="text" class="form-control" id="inputUsername" placeholder="Username">
+														</div>
+														<div class="form-group">
+															<label for="inputUsername">Biography</label>
+															<textarea rows="2" class="form-control" id="inputBio" placeholder="Tell something about yourself"></textarea>
+														</div>
+													</div>
+                                                                                                                        <%
+                                                                                                                            
+                                                                                                                        %>
+													<div class="col-md-4">
+														<div class="text-center">
+                                                                                                                    <img style="background-color: aliceblue;
+                                                                                                                        height: 128px;
+                                                                                                                        object-fit: cover;" id="output" src="<%=source_avatar%>" class="rounded-circle img-responsive mt-2" width="128" height="128">
+															<div class="mt-2">
+                                                                                                                            <button type="button" class="btn btn-primary" onclick="myClick()">
+                                                                                                                                
+                                                                                                                                <input id="inputImage" style="display: none;" accept="image/*" onchange="loadFile(event)" type="file" class="validation-file btn btn-primary" name="validation-file">                                                                                                                                   
+                                                                                                                               
+                                                                                                                                    <i class="fas fa-upload"></i> Upload
+                                                                                                                                </button>
+															</div>
+                                                                                                                        <style>
+                                                                                                                            #output_str{
+                                                                                                                                color: red; display: none;
+                                                                                                                            }
+                                                                                                                        </style>
+                                                                                                                        <small style="" id="output_str">Please select a valid image!!!</small>
+															<small>For best results, use an image at least 128px by 128px in .jpg format</small>
+                                                                                                                        
+														</div>
+													</div>
+												</div>
+
+												<button type="submit" class="btn btn-primary">Save changes</button>
+											</form>
+
+										</div>
+									</div>
+
+									<div class="card">
+										<div class="card-header">
+											<div class="card-actions float-right">
+												<div class="dropdown show">
+													<a href="#" data-toggle="dropdown" data-display="static">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-horizontal align-middle"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+                </a>
+
+													<div class="dropdown-menu dropdown-menu-right">
+														<a class="dropdown-item" href="#">Action</a>
+														<a class="dropdown-item" href="#">Another action</a>
+														<a class="dropdown-item" href="#">Something else here</a>
+													</div>
+												</div>
+											</div>
+                                                                                    <h5 id="private" class="card-title mb-0">Private info</h5>
+										</div>
+										<div class="card-body">
+											<form action="${pageContext.request.contextPath}/accountSetting" method="post">
+                                                                                            <h3>${errorString}</h3>
+                                                                                            
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<label for="inputFirstName">Full name</label>
+														<input type="text" value="${init_user.getName_user()}" class="form-control" required="" placeholder="Nguyễn Văn A">
+                                                                                                                <small class="font-13 text-muted">e.g "Dinh Tan Tu Dep Trai"</small>
+                                                                                                        </div>
+                                                                                                        <div class="form-group col-md-6">
+                                                                                                                <label>Telephone</label>
+                                                                                                                <input type="text" class="form-control" value="${init_user.getPhone()}" required="" placeholder="0123456789" data-mask="000-000-0000" autocomplete="off" maxlength="11">
+                                                                                                                <small class="font-13 text-muted">e.g "xxx-xxx-xxxx"</small>
+                                                                                                        </div>
+													
+												</div>
+                                                                                                <div class="form-group">
+                                                                                                        <label class="form-label">Email</label>
+                                                                                                        <input value="${init_user.getEmail()}" required="" placeholder="abc@examle.com" type="text" class="form-control" name="validation-email" placeholder="Email">
+                                                                                                        <small class="form-text text-muted">e.g "tudeptrai123@gmail.com".</small>
+                                                                                                </div>
+												
+                                                                                            <div class="form-group" style="display: flex;">
+                                                                                                <div class="form-group" style="width:50%">
+                                                                                                    <label class="form-label">Date Only</label>
+                                                                                                    <div class="input-group date" id="datetimepicker-date" data-target-input="nearest">
+                                                                                                        <input id="birth" type="text" name="birth" value="${init_user.getBirth()}" class="form-control datetimepicker-input" data-target="#datetimepicker-date">
+                                                                                                            <div class="input-group-append" data-target="#datetimepicker-date" data-toggle="datetimepicker">
+                                                                                                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                                                                                            </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                           
+                                                                                             <div class="form-group" style="margin-left: 35px;width: 50%;">
+                                                                                                 <label for="customRadio1">Gender</label>
+                                                                                                 <div style="display: flex; padding-top: 6px; justify-content: space-between;" class="gender-radio">
+                                                                                                     <div style="padding-left: 20px;" class="custom-control custom-radio">
+                                                                                                     <input id="gender" type="radio" name="Male" class="custom-control-input" id="customRadio1" checked="">
+                                                                                                     <label class="custom-control-label" for="customRadio1">Male</label>
+                                                                                                   </div>
+                                                                                                   <div class="custom-control custom-radio">
+                                                                                                     <input id="gender" type="radio" name="Female" class="custom-control-input" id="customRadio2">
+                                                                                                     <label class="custom-control-label" for="customRadio2">Female</label>
+                                                                                                   </div>
+                                                                                                   <div class="custom-control custom-radio">
+                                                                                                     <input id="gender" type="radio" name="Undentified" class="custom-control-input" id="customRadio3">
+                                                                                                     <label class="custom-control-label" for="customRadio3">Undentified</label>
+                                                                                                   </div>
+                                                                                                 </div>
+                                                                                             </div>
+
+                                                                                         </div>
+												<div class="form-group">
+                                                                                                    <label for="input04">Address</label>
+                                                                                                    <input type="text" name="address" class="form-control" id="input04" value="${init_user.getAddress()}" placeholder="90/1 Đường số 8" required=""> 
+                                                                                                    <div class="valid-feedback"> Success! You've done it. </div>
+                                                                                                </div>
+                                                                                                 <div class="form-group">
+                                                                                                     
+                                                                                                     <div class="form-group" style="display: flex; justify-content: space-between;">
+                                                                                                         <div class="input-field" style="width:40%;cursor: pointer;">
+                                                                                                             <select name="province" id="province" class="form-control select2"  data-toggle="select2">
+                                                                                                                 <option>Select Province</option>
+                                                                                                            </select>
+                                                                                                             <input id="val-province" type="hidden" value="3">
+                                                                                                        </div>
+                                                                                                         <div class="input-field" style="width:40%;cursor: pointer;">
+                                                                                                             <select name="district" id="district" class="form-control select2" data-toggle="select2">
+                                                                                                                 <option>Select District</option>
+                                                                                                            </select>
+                                                                                                        </div>
+                                                                                                     </div>
+
+                                                                                                    <div class="input-field" style="cursor: pointer;">
+                                                                                                        <select name="town" id="town" class="form-control select2" data-toggle="select2">
+                                                                                                                 <option>Select Town</option>
+                                                                                                         </select>            
+                                                                                                   </div>
+                                                                                                 </div>
+												<button type="submit" class="btn btn-primary">Save changes</button>
+											</form>
+
+										</div>
+									</div>
+
+								</div>
+								<div class="tab-pane fade" id="password" role="tabpanel">
+									<div class="card">
+										<div class="card-body">
+											<h5 class="card-title">Password</h5>
+
+											<form>
+												<div class="form-group">
+													<label for="inputPasswordCurrent">Current password</label>
+													<input type="password" class="form-control" id="inputPasswordCurrent">
+													<small><a href="#">Forgot your password?</a></small>
+												</div>
+												<div class="form-group">
+													<label for="inputPasswordNew">New password</label>
+													<input type="password" class="form-control" id="inputPasswordNew">
+												</div>
+												<div class="form-group">
+													<label for="inputPasswordNew2">Verify password</label>
+													<input type="password" class="form-control" id="inputPasswordNew2">
+												</div>
+												<button type="submit" class="btn btn-primary">Save changes</button>
+											</form>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
                     <!-- /grid row -->
                   </div>
+                
             </div>
         </section>
         <!-- End Login Area -->
@@ -452,8 +525,6 @@
             <i class='bx bx-up-arrow-alt'></i>
         </div>
         <!-- End Go Top Area -->
-        
-        
         <!-- Jquery Slim JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         <script src="assets/js/jquery.min.js"></script>
@@ -471,7 +542,6 @@
         <script src="assets/js/jquery.magnific-popup.min.js"></script>
         <!-- Nice Select JS -->
         <script src="assets/js/jquery.nice-select.min.js"></script>
-        <script src="assets/css/flatpickr/flatpickr.min.js"></script>
         <!-- Slick JS -->
         <script src="assets/js/slick.min.js"></script>
         <!-- Odometer JS -->
@@ -579,15 +649,116 @@
             });
             
         </script> 
-        <script>
-        $( function() {
-          $( "#datepicker" ).datepicker();
-        } );
-        $( "#datepicker" ).datepicker({
-            altFormat: "yyyy-mm-dd"
-          });
-  </script>
+        
+	
+        <script src="js/app.js" ></script>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Select2
+			$(".select2").each(function() {
+				$(this)
+					.wrap("<div class=\"position-relative\"></div>")
+					.select2({
+						placeholder: "Select value",
+						dropdownParent: $(this).parent()
+					});
+			})
+			// Daterangepicker
+			$("input[name=\"daterange\"]").daterangepicker({
+				opens: "left"
+			});
+			$("input[name=\"datetimes\"]").daterangepicker({
+				timePicker: true,
+				opens: "left",
+				startDate: moment().startOf("hour"),
+				endDate: moment().startOf("hour").add(32, "hour"),
+				locale: {
+					format: "M/DD hh:mm A"
+				}
+			});
+			$("input[name=\"datesingle\"]").daterangepicker({
+				singleDatePicker: true,
+				showDropdowns: true
+			});
+			// Datetimepicker
+			$('#datetimepicker-minimum').datetimepicker();
+			$('#datetimepicker-view-mode').datetimepicker({
+				viewMode: 'years'
+			});
+			$('#datetimepicker-time').datetimepicker({
+				format: 'LT'
+			});
+			$('#datetimepicker-date').datetimepicker({
+				format: 'L'
+			});
+			var start = moment().subtract(29, "days");
+			var end = moment();
 
+			function cb(start, end) {
+				$("#reportrange span").html(start.format("MMMM D, YYYY") + " - " + end.format("MMMM D, YYYY"));
+			}
+			$("#reportrange").daterangepicker({
+				startDate: start,
+				endDate: end,
+				ranges: {
+					"Today": [moment(), moment()],
+					"Yesterday": [moment().subtract(1, "days"), moment().subtract(1, "days")],
+					"Last 7 Days": [moment().subtract(6, "days"), moment()],
+					"Last 30 Days": [moment().subtract(29, "days"), moment()],
+					"This Month": [moment().startOf("month"), moment().endOf("month")],
+					"Last Month": [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")]
+				}
+			}, cb);
+			cb(start, end);
+		});
+	</script>
+        <script>
+          var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+              URL.revokeObjectURL(output.src) // free memory
+            }
+          };
+          var myClick = function()
+          {
+              document.getElementById('inputImage').click();
+          };
+          var validation = document.getElementById("form1");
+          var myFunction = function(){
+              var inputImage = document.getElementById("inputImage").value;
+              output = document.getElementById("output_str");
+              if (inputImage!='') {
+                  
+                   output.style.display = "none";
+              }
+              else
+              {
+                  output.style.display = "block";
+                   event.preventDefault();
+              }
+          };
+                        /* When the user clicks on the button, 
+              toggle between hiding and showing the dropdown content */
+                var dropdownClick = function() {
+                document.getElementsByClassName("dropdown-menu-right").classList.toggle('show');
+              }
+
+              // Close the dropdown if the user clicks outside of it
+              window.onclick = function(event) {
+                if (!event.target.matches('.dropbtn')) {
+                  var dropdowns = document.getElementsByClassName("dropdown-content");
+                  var i;
+                  for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                      openDropdown.classList.remove('show');
+                    }
+                  }
+                }
+              }
+        </script>
+        
     
     </body>
 

@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 6, 2021, 7:37:15 AM
+    Author     : Napster
+*/
+
+.navbar-collapse ul{
+    flex-direction: row;
+}
+.navbar-collapse ul li {
+    padding-left: 0;
+    margin-right: 0;
+}
+.navbar-collapse ul li:before {
+    display: none;
+}
+.navbar-collapse ul li a{
+    color: white;
+}
+.navbar-collapse ul li:last-child #name-user span{
+    color:white!important;
+}
+
+.navbar-collapse ul li .dropdown-menu a {
+    color: #343a40;
+}
+.navbar-collapse ul li .dropdown-menu {
+    top: 40px!important;
+    left: 5px!important;
+}
+.navbar-collapse ul li:nth-child(3) .dropdown-menu {
+    left: -120px!important;
+}
+.top-header-content{
+    padding-top: 10px;
+}
+.top-header-optional .login:before
+{
+    display: none;
+}
+.navbar-area .main-navbar .navbar-light{
+    box-shadow: none;
+}

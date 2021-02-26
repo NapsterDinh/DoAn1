@@ -66,22 +66,6 @@
         
         <%@include file="middleheader.jsp" %>
 
-
-        <!-- Start Page Banner -->
-        <div class="page-title-area">
-            <div class="container">
-                <div class="page-title-content">
-                    <h2>Register</h2>
-
-                    <ul>
-                        <li><a href="index.jsp">Home</a></li>
-                        <li>Register</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <!-- End Page Banner -->
-
         <!-- Start Register Area -->
         <section class="register-area ptb-50">
             <div class="container">

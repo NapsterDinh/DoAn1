@@ -67,8 +67,8 @@ public class ShopController extends HttpServlet {
             // Kiểm tra người dùng đã đăng nhập (login) chưa.
             UserAccount loginedUser = MyUtils.getLoginedUser(session);
             Connection conn = MySQLConnUtils.getMySQLConnection();
-            session.setAttribute("count_wishlist", DBUtils.Get_Count_Wishlist(conn, loginedUser.getUsername()));
-            List<Product> list_product = DBUtils.Load_product(conn);
+            session.setAttribute("count_wishlist", DBUtils.Get_Count_Wishlist(conn, loginedUser.getUsername()));  
+            List<Product> list_product = DBUtils.Search_Product_By_IdCategory(conn, Integer.parseInt(request.getParameter("id_category"))); 
             request.setAttribute("list_product", list_product);
             
             

@@ -47,7 +47,7 @@ public class ActiveAccountController extends HttpServlet {
         String hash = request.getParameter("key2");
         
         try {
-            Connection conn = MySQLConnUtils.getMySQLConnection();
+            Connection conn = conn = MySQLConnUtils.getMySQLConnection();
             if(DBUtils.Check_Account_Active_Yet(conn, email, hash))
             {
                 RequestDispatcher dispatcher //

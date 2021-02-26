@@ -24,8 +24,16 @@
     
     <welcome-file-list>
         <welcome-file>home</welcome-file>
-        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    
+    <context-param> 
+      <description>Location to store uploaded file</description> 
+      <param-name>file-upload</param-name> 
+      <param-value>
+         G:\apache-tomcat-7.0.107-windows-x64\apache-tomcat-7.0.107\webapps
+      </param-value> 
+   </context-param>
     <!-- context-param này quy định 1 parameter tên là file-upload được gán bởi địa chỉ ở dưới-->>
             <context-param>
     <param-name>tempfile.dir</param-name>
